@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --light: 300;
+    --normal: 400;
+    --medium: 500;
+    --semibold: 600;
+    --bold: 700;
+
+    --heading-size: 3rem;
+    --label-size: 1.25rem;
+    --body-size: 1rem;
+    --button-size: 0.875rem;
+
+    --background-color: #12111F;
+    --open-tab-label-color: #F2F5F9;
+    --body-text-color: #CDD5E0;
+    --closed-tab-label-color: #97A3B6;
+    --tab-bg-color: #2A2936;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+body {
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: var(--body-size);
+    font-family: 'Be Vietnam Pro';
+    letter-spacing: -1%;
+    background-color: var(--background-color);
+}
+
+.header-title {
+    width: 800px;
+    height: 288px;
+    text-align: center;
+    background-image: url('./resources/faq-title-bg@2x-1.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-top: 72px;
+}
+
+.header-text {
+    width: 455px;
+    height: 144px;
+    font-size: var(--heading-size);
+    color: var(--closed-tab-label-color);
+    font-weight: var(--bold);
+    margin: auto;
+    line-height: 150%;
+}
+
+.tagline {
+    margin-top: 24px;
+    text-align: center;
+
+    h1 {
+        font-size: var(--label-size); 
+        font-weight: var(--semibold);
+        color: var(--open-tab-label-color);
+        line-height: 150%;
+    }
+
+    p {
+        font-size: var(--body-size);
+        font-weight: var(--light);
+        margin-top: 8px;
+        color: var(--closed-tab-label-color);
+    }
+}
+
+.button-cont {
+    margin-top: 40px;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 603px;
+}
+
+.nav {
+    color: var(--open-tab-label-color);
+    padding: 8px 20px;
+    cursor: pointer;
+
+    &:has(input[type=radio]:checked) {
+        border: 1px solid var(--tab-bg-color);
+        border-radius: 50px;
+        background-color: var(--tab-bg-color);
+    }
+}
+
+.navBtn {
+    font-size: var(--button-size);
+    cursor: pointer;
+}
+
+input[type=radio] {
+    display: none;
+}
+
+.faq-container {
+    margin-top: 80px;
+}
+
+.ques {
+    margin-bottom: 20px;
+}
+
+.collapsible {
+    width: 810px;
+    border: none;
+    border-radius: 28px;
+    background-color: transparent;
+    cursor: pointer;
+    text-align: left;
+    padding: 0 32px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+    & h2 {
+        padding-bottom: 8px;
+        color: var(--closed-tab-label-color);
+        font-size: var(--label-size);
+        font-weight: var(--semibold);
+        position: relative;
+
+        &:after {
+            content: url('./resources/Expand_down.svg');
+            font-size: var(--label-size);
+            color: var(--closed-tab-label-color);
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+
+    & .content {
+        color: var(--body-text-color);
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        font-size: var(--body-size);
+        font-weight: var(--normal);
+        line-height: 150%;
+    }
+
+    &.active {
+        padding: 28px 32px;
+        background-color: var(--tab-bg-color);
+
+        & h2 {
+            color: var(--open-tab-label-color);
+        }
+
+        & h2:after {
+            content: url('./resources/Collapse_up.svg');
+        }
+    }
+
+    &.active > .content {
+        display: block;
+        max-height: none;
+        opacity: 1;
+    }
+}
